@@ -5,6 +5,7 @@ import static org.junit.Assert.fail;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -13,6 +14,10 @@ public class DataDrivenTesting_SWD_Test {
 	private WebDriver driver;
 	private WriteExcelFile writeFile;
 	private ReadExcelFile readFile;
+	private By searchBoxLocator = By.id("search_query_top");
+	private By searchBtnLocator = By.name("submit_search");
+	private By resultTextLocator = By.cssSelector("span.heading-counter");
+	
 	
 	@Before
 	public void setUp() throws Exception {
@@ -32,7 +37,7 @@ public class DataDrivenTesting_SWD_Test {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		String filepath = "";
 	}
 
 }
