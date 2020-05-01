@@ -2,6 +2,8 @@ package com.qualitystream.tutorial;
 
 import static org.junit.Assert.fail;
 
+import java.io.IOException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,8 +38,23 @@ public class DataDrivenTesting_SWD_Test {
 	
 
 	@Test
-	public void test() {
-		String filepath = "";
+	public void test() throws IOException {
+		String filepath = "C:\\Massa\\Test.xlsx";
+		
+		String searchText = readFile.getCellValue(filepath, "Planilha1", 0, 0);
+		
+		driver.findElement(searchBoxLocator).sendKeys(searchText);
+		driver.findElement(searchBtnLocator).click();
+		String resultText = driver.findElement(resultTextLocator).getText();
+		
+		System.out.println("Page result text: " + resultText);
+		
+		readFile.readExcel(filepath, "Planilha1");
+		
+		writeFile.writeCellValue(filepath, "Planilha1", 0, 1, resultText);
+		
+		readFile.readExcel(filepath, "Planilha1");
+		
 	}
 
 }
